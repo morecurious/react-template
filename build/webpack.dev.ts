@@ -2,6 +2,8 @@ import path from 'path'
 import { merge } from 'webpack-merge'
 import webpack, { Configuration as WebpackConfiguration } from 'webpack'
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
+import WebpackDevServer from 'webpack-dev-server'
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import baseConfig from './webpack.base'
 
 interface Configuration extends WebpackConfiguration {
@@ -15,6 +17,9 @@ const port = '8082'
 const devConfig: Configuration = merge(baseConfig, {
   mode: 'development', // 开发模式,打包更加快速,省了代码优化步骤
   devtool: 'eval-cheap-module-source-map',
+  plugins: [
+    new ReactRefreshWebpackPlugin(), // 添加热更新插件
+  ],
   devServer: {
     host,
     port,

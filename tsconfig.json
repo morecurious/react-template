@@ -109,6 +109,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
     "jsx": "react-jsx" // 这里改成react-jsx，就不需要在tsx文件中手动引入React了
   },
   "include": ["./src", "./typings/*.d.ts"]
